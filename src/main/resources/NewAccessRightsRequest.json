@@ -1,0 +1,33 @@
+{
+  "permissions": [
+    {
+      "id": -1,
+      "parentPermissionId": -2,
+      "applicationId": -3,
+      "order": "1000",
+      "name": "",
+      "tag": "PERM_AD_",
+      "targetPermissionsIds": [
+      ],
+      "properties": {
+        "description": ""
+      }
+    }
+  ],
+  "applications": [
+    {
+      "id": -3,
+      "appGroupId": -4,
+      "order": "1000",
+      "name": "",
+      "tag": "APP_"
+    }
+  ],
+  "applicationGroups": [
+    {
+      "id": -4,
+      "name": "",
+      "tag": "AG_"
+    }
+  ]
+}

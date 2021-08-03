@@ -1,0 +1,270 @@
+{
+  "applicationGroups": [
+    {
+      "id": 627,
+      "clientId": null,
+      "name": "Duo",
+      "tag": "AG_Duo",
+      "type": "APP",
+      "order": null,
+      "applications": [
+        {
+          "id": 652,
+          "clientId": null,
+          "name": "AD",
+          "tag": "APP_AD",
+          "order": "10",
+          "appGroupId": 627,
+          "properties": {},
+          "permissions": [
+            {
+              "id": 1523,
+              "clientId": null,
+              "name": "asd",
+              "tag": "PERM_AD_asd",
+              "order": "20",
+              "owner": null,
+              "admin": null,
+              "applicationId": 652,
+              "parentPermissionId": null,
+              "permissionGroupId": null,
+              "statisticsStatus": "DEFAULT",
+              "properties": {
+                "description": "asdasdas"
+              },
+              "statisticsCategoryIds": [],
+              "strongAuthIds": [],
+              "links": [],
+              "targetPermissionsIds": [
+                1499
+              ],
+              "subPermissions": [
+                {
+                  "id": 1524,
+                  "clientId": null,
+                  "name": "ggsdf",
+                  "tag": "PERM_AD_ggsdf",
+                  "order": "10",
+                  "owner": null,
+                  "admin": null,
+                  "applicationId": 652,
+                  "parentPermissionId": 1523,
+                  "permissionGroupId": null,
+                  "statisticsStatus": "DEFAULT",
+                  "properties": {
+                    "description": "ffasd"
+                  },
+                  "statisticsCategoryIds": [],
+                  "strongAuthIds": [],
+                  "links": [],
+                  "targetPermissionsIds": [
+                    1492
+                  ],
+                  "subPermissions": [],
+                  "subPermissionGroups": []
+                }
+              ],
+              "subPermissionGroups": []
+            },
+            {
+              "id": 677,
+              "clientId": null,
+              "name": "Test Prov Role",
+              "tag": "PERM_AD_Test Prov Role",
+              "order": "10",
+              "owner": null,
+              "admin": null,
+              "applicationId": 652,
+              "parentPermissionId": null,
+              "permissionGroupId": null,
+              "statisticsStatus": "DEFAULT",
+              "properties": {
+                "description": "test rle"
+              },
+              "statisticsCategoryIds": [],
+              "strongAuthIds": [],
+              "links": [],
+              "targetPermissionsIds": [
+                577
+              ],
+              "subPermissions": [],
+              "subPermissionGroups": []
+            }
+          ],
+          "permissionGroups": []
+        },
+        {
+          "id": 1557,
+          "clientId": null,
+          "name": "asdasd",
+          "tag": "APP_asdasd",
+          "order": "20",
+          "appGroupId": 627,
+          "properties": {},
+          "permissions": [
+            {
+              "id": 1522,
+              "clientId": null,
+              "name": "ffas",
+              "tag": "PERM_asdasd_ffas",
+              "order": "10",
+              "owner": null,
+              "admin": null,
+              "applicationId": 1557,
+              "parentPermissionId": null,
+              "permissionGroupId": null,
+              "statisticsStatus": "DEFAULT",
+              "properties": {},
+              "statisticsCategoryIds": [],
+              "strongAuthIds": [],
+              "links": [],
+              "targetPermissionsIds": [
+                1492
+              ],
+              "subPermissions": [],
+              "subPermissionGroups": []
+            }
+          ],
+          "permissionGroups": []
+        }
+      ]
+    },
+    {
+      "id": 1579,
+      "clientId": null,
+      "name": "cc",
+      "tag": "AG_cc",
+      "type": "APP",
+      "order": null,
+      "applications": [
+        {
+          "id": 1556,
+          "clientId": null,
+          "name": "bb",
+          "tag": "APP_bb",
+          "order": "1000",
+          "appGroupId": 1579,
+          "properties": {},
+          "permissions": [
+            {
+              "id": 1521,
+              "clientId": null,
+              "name": "aa",
+              "tag": "PERM_AD_aa",
+              "order": "1000",
+              "owner": null,
+              "admin": null,
+              "applicationId": 1556,
+              "parentPermissionId": null,
+              "permissionGroupId": null,
+              "statisticsStatus": "DEFAULT",
+              "properties": {},
+              "statisticsCategoryIds": [],
+              "strongAuthIds": [],
+              "links": [],
+              "targetPermissionsIds": [
+                577
+              ],
+              "subPermissions": [],
+              "subPermissionGroups": []
+            }
+          ],
+          "permissionGroups": []
+        }
+      ]
+    }
+  ],
+  "targetPermissions": [
+    {
+      "id": 577,
+      "clientId": null,
+      "name": "Test Prov Role",
+      "tag": "TP_CAIM_ROLE_Test Prov Role",
+      "backendUniqueName": null,
+      "connectorId": 177,
+      "modType": "ADD",
+      "type": "ROLE",
+      "value": null,
+      "executionPlanId": 527,
+      "bulkExecutionPlanId": null,
+      "supportedActions": null,
+      "complianceTargetPermissions": []
+    },
+    {
+      "id": 1492,
+      "clientId": null,
+      "name": "Test Prov Role 3",
+      "tag": "TP_CAIM_ROLE_Test Prov Role 3",
+      "backendUniqueName": null,
+      "connectorId": 177,
+      "modType": "ADD",
+      "type": "ROLE",
+      "value": null,
+      "executionPlanId": 527,
+      "bulkExecutionPlanId": null,
+      "supportedActions": null,
+      "complianceTargetPermissions": []
+    },
+    {
+      "id": 1499,
+      "clientId": null,
+      "name": "Test Prov Role 2",
+      "tag": "TP_CAIM_ROLE_Test Prov Role 2",
+      "backendUniqueName": null,
+      "connectorId": 177,
+      "modType": "ADD",
+      "type": "ROLE",
+      "value": null,
+      "executionPlanId": 527,
+      "bulkExecutionPlanId": null,
+      "supportedActions": null,
+      "complianceTargetPermissions": []
+    },
+    {
+      "id": 302,
+      "clientId": null,
+      "name": "TestAccessRole",
+      "tag": "TP_CAIM_ACCESS_ROLE_TestAccessRole",
+      "backendUniqueName": null,
+      "connectorId": 177,
+      "modType": "ADD",
+      "type": "ACCESS_ROLE",
+      "value": null,
+      "executionPlanId": 527,
+      "bulkExecutionPlanId": null,
+      "supportedActions": null,
+      "complianceTargetPermissions": []
+    }
+  ],
+  "executionPlans": [
+    {
+      "id": 527,
+      "clientId": null,
+      "name": "ManageRoles_Plan",
+      "tag": "EP_ManageRoles_Plan",
+      "connectorId": 177,
+      "useCaseId": null,
+      "rules": [
+        {
+          "id": 552,
+          "clientId": null,
+          "name": "alwaystrue",
+          "priority": 1,
+          "expression": "true",
+          "executionRulesId": 527,
+          "addForm": 502,
+          "removeForm": 502,
+          "modifyForm": null,
+          "addBulkForm": null,
+          "removeBulkForm": null,
+          "modifyBulkForm": null,
+          "mode": "AccessRights",
+          "addSupported": true,
+          "modifySupported": false,
+          "removeSupported": true
+        }
+      ],
+      "runMode": "SINGLE"
+    }
+  ]
+}
