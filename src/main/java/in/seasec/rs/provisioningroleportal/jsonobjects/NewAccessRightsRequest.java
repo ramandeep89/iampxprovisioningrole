@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NewAccessRightsRequest {
-    public class Application {
+    public static class Application {
 
         private Integer id;
         private Integer appGroupId;
@@ -100,7 +100,7 @@ public class NewAccessRightsRequest {
 
     }
 
-    public class ApplicationGroup {
+    public static class ApplicationGroup {
 
         private Integer id;
         private String name;
@@ -169,7 +169,7 @@ public class NewAccessRightsRequest {
 
     }
 
-    public class Permission {
+    public static class Permission {
 
         private Integer id;
         private Integer applicationId;
@@ -303,7 +303,7 @@ public class NewAccessRightsRequest {
 
     }
 
-    public class Properties {
+    public static class Properties {
 
         private String description;
         private Map<String, Object> additionalProperties = new HashMap<String, Object>();

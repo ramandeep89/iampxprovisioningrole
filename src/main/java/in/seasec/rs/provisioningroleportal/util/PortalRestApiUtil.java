@@ -6,18 +6,47 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 public class PortalRestApiUtil {
     final private String hostname;
 
-    final private Client client = ClientBuilder.newClient();
+    final private Client client;
+
+    public static Client ignoreSSLClient() throws Exception {
+
+        SSLContext sslcontext = SSLContext.getInstance("TLS");
+
+        sslcontext.init(null, new TrustManager[]{new X509TrustManager() {
+            public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+            }
+
+            public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+            }
+
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+        }}, new java.security.SecureRandom());
+
+        return ClientBuilder.newBuilder()
+                .sslContext(sslcontext)
+                .hostnameVerifier((s1, s2) -> true)
+                .build();
+    }
 
     private static final String TARGET_PERMISSION_URI = "https://$host/sigma/rest/admin/targetpermission";
     private static final String ACCESS_RIGHTS_URI = "https://$host/sigma/rest/admin/access";
 
-    public PortalRestApiUtil(String hostname, String username, String password) {
+    public PortalRestApiUtil(String hostname, String username, String password) throws Exception {
         this.hostname = hostname;
 
         HttpAuthenticationFeature authenticationFeature = HttpAuthenticationFeature.basic(username, password);
+        client = ignoreSSLClient();
         client.register(authenticationFeature);
     }
 

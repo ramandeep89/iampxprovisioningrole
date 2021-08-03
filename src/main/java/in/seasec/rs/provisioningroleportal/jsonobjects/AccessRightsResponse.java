@@ -55,7 +55,7 @@ public class AccessRightsResponse {
         return sb.toString();
     }
 
-    public class ApplicationGroup {
+    public static class ApplicationGroup {
 
         private Integer id;
         private Object clientId;
@@ -163,7 +163,7 @@ public class AccessRightsResponse {
 
     }
 
-    public class ExecutionPlan {
+    public static class ExecutionPlan {
 
         private Integer id;
         private Object clientId;
@@ -284,7 +284,7 @@ public class AccessRightsResponse {
 
     }
 
-    public class TargetPermission {
+    public static class TargetPermission {
 
         private Integer id;
         private Object clientId;
@@ -470,7 +470,7 @@ public class AccessRightsResponse {
 
     }
 
-    public class Application {
+    public static class Application {
 
         private Integer id;
         private Object clientId;
@@ -604,7 +604,7 @@ public class AccessRightsResponse {
 
     }
 
-    public class Permission {
+    public static class Permission {
 
         private Integer id;
         private Object clientId;
@@ -855,7 +855,7 @@ public class AccessRightsResponse {
 
     }
 
-    public class Properties {
+    public static class Properties {
 
         private String description;
 
@@ -885,7 +885,7 @@ public class AccessRightsResponse {
 
     }
 
-    public class Rule {
+    public static class Rule {
 
         private Integer id;
         private Object clientId;

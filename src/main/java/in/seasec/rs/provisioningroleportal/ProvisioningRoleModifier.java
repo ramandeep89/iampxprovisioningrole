@@ -9,7 +9,7 @@ import in.seasec.rs.provisioningroleportal.util.PortalRestApiUtil;
 import static in.seasec.rs.provisioningroleportal.util.ResourceReader.readResource;
 
 public class ProvisioningRoleModifier {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         final String portalHostname = args[0];
         final String portalUsername = args[1];
         final String portalPassword = args[2];

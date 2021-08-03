@@ -11,7 +11,7 @@ import static in.seasec.rs.provisioningroleportal.util.ResourceReader.readResour
 
 public class ProvisioningRoleCreator {
 
-    public static void main(String[] args) throws ParentPermissionDoesNotExistException {
+    public static void main(String[] args) throws Exception {
 
         final String portalHostname = args[0];
         final String portalUsername = args[1];

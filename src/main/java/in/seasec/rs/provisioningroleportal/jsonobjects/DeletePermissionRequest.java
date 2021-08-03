@@ -3,7 +3,7 @@ package in.seasec.rs.provisioningroleportal.jsonobjects;
 import java.util.List;
 
 public class DeletePermissionRequest {
-    public class Deleted {
+    public static class Deleted {
 
         private Integer id;
         private String type;

@@ -10,7 +10,7 @@ import static in.seasec.rs.provisioningroleportal.util.ResourceReader.readResour
 
 public class ProvisioningRoleDeleter {
 
-    public static void main(String[] args) throws PermissionNotEmptyException {
+    public static void main(String[] args) throws Exception {
         final String portalHostname = args[0];
         final String portalUsername = args[1];
         final String portalPassword = args[2];
