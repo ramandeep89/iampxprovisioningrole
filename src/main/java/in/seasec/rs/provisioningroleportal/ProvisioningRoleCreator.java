@@ -61,6 +61,8 @@ public class ProvisioningRoleCreator {
         request.getPermissions().get(0).getTargetPermissionsIds().add(targetPermissionId);
         if (!description.isEmpty())
             request.getPermissions().get(0).getProperties().setDescription(description);
+        if (subPermissionName.isEmpty())
+            request.getPermissions().get(0).setParentPermissionId(null);
         else request.getPermissions().get(0).getProperties().setDescription(null);
         for (AccessRightsResponse.ApplicationGroup applicationGroup :
                 accessRights.getApplicationGroups()) {
@@ -78,8 +80,6 @@ public class ProvisioningRoleCreator {
                                 if (permission.getName().equals(permissionName))
                                     request.getPermissions().get(0).setParentPermissionId(permission.getId());
                             }
-                        } else {
-                            request.getPermissions().get(0).setParentPermissionId(null);
                         }
                     }
                 }
@@ -88,7 +88,6 @@ public class ProvisioningRoleCreator {
 
         if(request.getPermissions().get(0).getParentPermissionId() != null && request.getPermissions().get(0).getParentPermissionId() < 0)
             throw new ParentPermissionDoesNotExistException("Parent permission " + permissionName + " does not exist!");
-
         util.newAccessRights(request);
     }
 }

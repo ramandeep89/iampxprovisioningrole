@@ -6,6 +6,9 @@ import in.seasec.rs.provisioningroleportal.jsonobjects.AccessRightsResponse;
 import in.seasec.rs.provisioningroleportal.jsonobjects.DeletePermissionRequest;
 import in.seasec.rs.provisioningroleportal.util.PortalRestApiUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static in.seasec.rs.provisioningroleportal.util.ResourceReader.readResource;
 
 public class ProvisioningRoleDeleter {
@@ -18,27 +21,29 @@ public class ProvisioningRoleDeleter {
         final String applicationName = args[4];
         final String permissionName = args[5];
         final String subPermissionName = args[6];
-        final boolean forceDelete = args[7].toLowerCase().equals("true");
+        final boolean forceDelete = args[7].equalsIgnoreCase("true");
         final PortalRestApiUtil portalRestApiUtil = new PortalRestApiUtil(portalHostname, portalUsername, portalPassword);
 
-
-        portalRestApiUtil.deleteTargetPermission(deleteAccessRights(
+        List<Integer> targetPermissionIds = deleteAccessRights(
                 applicationGroupName,
                 applicationName,
                 permissionName,
                 subPermissionName,
                 forceDelete,
-                portalRestApiUtil));
+                portalRestApiUtil);
+
+        deleteTargetPermissions(targetPermissionIds, portalRestApiUtil);
 
     }
 
-    private static final int deleteAccessRights(
+    private static final List<Integer> deleteAccessRights(
             String applicationGroupName,
             String applicationName,
             String permissionName,
             String subPermissionName,
             boolean forceDelete,
             PortalRestApiUtil util) throws PermissionNotEmptyException {
+        List<Integer> targetPermissionIds = new ArrayList<>();
         AccessRightsResponse accessRights = util.getAccessRights();
         Gson gson = new Gson();
         DeletePermissionRequest request = gson.fromJson(readResource("DeletePermissionRequest.json"), DeletePermissionRequest.class);
@@ -55,6 +60,7 @@ public class ProvisioningRoleDeleter {
                                     for (AccessRightsResponse.Permission subPermission :
                                             permission.getSubPermissions()) {
                                         if (subPermission.getName().equals(subPermissionName)) {
+                                            targetPermissionIds.add(subPermission.getTargetPermissionsIds().get(0));
                                             request.getDeleted().get(0).setId(subPermission.getId());
                                         }
                                     }
@@ -62,7 +68,12 @@ public class ProvisioningRoleDeleter {
                                     if (!forceDelete && !permission.getSubPermissions().isEmpty())
                                         throw new PermissionNotEmptyException(
                                                 "Target Permission " + permissionName + "(" + permission.getId() + ")  is not empty!");
-                                    else request.getDeleted().get(0).setId(permission.getId());
+                                    request.getDeleted().get(0).setId(permission.getId());
+                                    targetPermissionIds.add(permission.getTargetPermissionsIds().get(0));
+                                    for (AccessRightsResponse.Permission subPermission :
+                                            permission.getSubPermissions()) {
+                                        targetPermissionIds.add(subPermission.getTargetPermissionsIds().get(0));
+                                    }
                                 }
                             }
                         }
@@ -70,7 +81,12 @@ public class ProvisioningRoleDeleter {
                 }
             }
         }
+        util.deleteAccessRights(request);
+        return targetPermissionIds;
+    }
 
-        return util.deleteAccessRights(request);
+    public static final void deleteTargetPermissions(List<Integer> targetPermissionIds, PortalRestApiUtil util) {
+        for (int targetPermissionId: targetPermissionIds)
+            util.deleteTargetPermission(targetPermissionId);
     }
 }

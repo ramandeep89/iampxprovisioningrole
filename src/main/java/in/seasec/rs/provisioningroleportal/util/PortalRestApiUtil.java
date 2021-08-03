@@ -86,7 +86,7 @@ public class PortalRestApiUtil {
 
     public int deleteTargetPermission(final int targetPermissionId) {
         WebTarget webTarget = client.target(TARGET_PERMISSION_URI.replace("$host", hostname) + "/" + targetPermissionId);
-        Invocation.Builder invocationBuilder = webTarget.request();
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.TEXT_PLAIN_TYPE);
         Response response = invocationBuilder.delete();
         if(response.getStatus() != 200) throw new WebApplicationException(response);
         return response.getStatus();
