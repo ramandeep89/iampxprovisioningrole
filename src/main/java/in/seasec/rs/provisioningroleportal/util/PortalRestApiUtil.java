@@ -1,6 +1,8 @@
 package in.seasec.rs.provisioningroleportal.util;
 
+import com.google.gson.Gson;
 import in.seasec.rs.provisioningroleportal.jsonobjects.*;
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.client.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -53,15 +55,16 @@ public class PortalRestApiUtil {
     public NewTargetPermissionResponse newTargetPermission(final NewTargetPermissionRequest request) {
         WebTarget webTarget = client.target(TARGET_PERMISSION_URI.replace("$host", hostname));
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON_TYPE);
-        Response response = invocationBuilder.post(Entity.entity(request, MediaType.APPLICATION_JSON_TYPE));
-
-        return response.readEntity(NewTargetPermissionResponse.class);
+        Response response = invocationBuilder.post(Entity.json(new Gson().toJson(request)));
+        if(response.getStatus() != 200) throw new WebApplicationException(response);
+        return new Gson().fromJson(response.readEntity(String.class), NewTargetPermissionResponse.class);
     }
 
     public int newAccessRights(final NewAccessRightsRequest request) {
         WebTarget webTarget = client.target(ACCESS_RIGHTS_URI.replace("$host", hostname));
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON_TYPE);
-        Response response = invocationBuilder.post(Entity.entity(request, MediaType.APPLICATION_JSON_TYPE));
+        Response response = invocationBuilder.post(Entity.json(new Gson().toJson(request)));
+        if(response.getStatus() != 200) throw new WebApplicationException(response);
         return response.getStatus();
     }
 
@@ -69,14 +72,15 @@ public class PortalRestApiUtil {
         WebTarget webTarget = client.target(ACCESS_RIGHTS_URI.replace("$host", hostname));
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON_TYPE);
         Response response = invocationBuilder.get();
-
-        return response.readEntity(AccessRightsResponse.class);
+        if(response.getStatus() != 200) throw new WebApplicationException(response);
+        return new Gson().fromJson(response.readEntity(String.class), AccessRightsResponse.class);
     }
 
     public int deleteAccessRights(final DeletePermissionRequest request) {
         WebTarget webTarget = client.target(ACCESS_RIGHTS_URI.replace("$host", hostname));
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON_TYPE);
-        Response response = invocationBuilder.post(Entity.entity(request, MediaType.APPLICATION_JSON_TYPE));
+        Response response = invocationBuilder.post(Entity.json(new Gson().toJson(request)));
+        if(response.getStatus() != 200) throw new WebApplicationException(response);
         return response.getStatus();
     }
 
@@ -84,6 +88,7 @@ public class PortalRestApiUtil {
         WebTarget webTarget = client.target(TARGET_PERMISSION_URI.replace("$host", hostname) + "/" + targetPermissionId);
         Invocation.Builder invocationBuilder = webTarget.request();
         Response response = invocationBuilder.delete();
+        if(response.getStatus() != 200) throw new WebApplicationException(response);
         return response.getStatus();
     }
 }

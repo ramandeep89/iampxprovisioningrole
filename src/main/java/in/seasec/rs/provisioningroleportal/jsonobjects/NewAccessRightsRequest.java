@@ -1,8 +1,6 @@
 package in.seasec.rs.provisioningroleportal.jsonobjects;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class NewAccessRightsRequest {
     public static class Application {
@@ -12,7 +10,6 @@ public class NewAccessRightsRequest {
         private String order;
         private String name;
         private String tag;
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
         public Integer getId() {
             return id;
@@ -54,13 +51,6 @@ public class NewAccessRightsRequest {
             this.tag = tag;
         }
 
-        public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
-        }
-
-        public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
-        }
 
         @Override
         public String toString() {
@@ -86,10 +76,6 @@ public class NewAccessRightsRequest {
             sb.append('=');
             sb.append(((this.tag == null) ? "<null>" : this.tag));
             sb.append(',');
-            sb.append("additionalProperties");
-            sb.append('=');
-            sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));
-            sb.append(',');
             if (sb.charAt((sb.length() - 1)) == ',') {
                 sb.setCharAt((sb.length() - 1), ']');
             } else {
@@ -105,7 +91,6 @@ public class NewAccessRightsRequest {
         private Integer id;
         private String name;
         private String tag;
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
         public Integer getId() {
             return id;
@@ -131,14 +116,6 @@ public class NewAccessRightsRequest {
             this.tag = tag;
         }
 
-        public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
-        }
-
-        public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
-        }
-
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -154,10 +131,6 @@ public class NewAccessRightsRequest {
             sb.append("tag");
             sb.append('=');
             sb.append(((this.tag == null) ? "<null>" : this.tag));
-            sb.append(',');
-            sb.append("additionalProperties");
-            sb.append('=');
-            sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));
             sb.append(',');
             if (sb.charAt((sb.length() - 1)) == ',') {
                 sb.setCharAt((sb.length() - 1), ']');
@@ -179,7 +152,6 @@ public class NewAccessRightsRequest {
         private String tag;
         private List<Integer> targetPermissionsIds = null;
         private Properties properties;
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
         public Integer getId() {
             return id;
@@ -245,14 +217,6 @@ public class NewAccessRightsRequest {
             this.properties = properties;
         }
 
-        public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
-        }
-
-        public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
-        }
-
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -289,10 +253,6 @@ public class NewAccessRightsRequest {
             sb.append('=');
             sb.append(((this.properties == null) ? "<null>" : this.properties));
             sb.append(',');
-            sb.append("additionalProperties");
-            sb.append('=');
-            sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));
-            sb.append(',');
             if (sb.charAt((sb.length() - 1)) == ',') {
                 sb.setCharAt((sb.length() - 1), ']');
             } else {
@@ -306,7 +266,6 @@ public class NewAccessRightsRequest {
     public static class Properties {
 
         private String description;
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
         public String getDescription() {
             return description;
@@ -316,14 +275,6 @@ public class NewAccessRightsRequest {
             this.description = description;
         }
 
-        public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
-        }
-
-        public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
-        }
-
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -331,10 +282,6 @@ public class NewAccessRightsRequest {
             sb.append("description");
             sb.append('=');
             sb.append(((this.description == null) ? "<null>" : this.description));
-            sb.append(',');
-            sb.append("additionalProperties");
-            sb.append('=');
-            sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));
             sb.append(',');
             if (sb.charAt((sb.length() - 1)) == ',') {
                 sb.setCharAt((sb.length() - 1), ']');
@@ -349,7 +296,6 @@ public class NewAccessRightsRequest {
     private List<Permission> permissions = null;
     private List<Application> applications = null;
     private List<ApplicationGroup> applicationGroups = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<Permission> getPermissions() {
         return permissions;
@@ -375,14 +321,6 @@ public class NewAccessRightsRequest {
         this.applicationGroups = applicationGroups;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -398,10 +336,6 @@ public class NewAccessRightsRequest {
         sb.append("applicationGroups");
         sb.append('=');
         sb.append(((this.applicationGroups == null) ? "<null>" : this.applicationGroups));
-        sb.append(',');
-        sb.append("additionalProperties");
-        sb.append('=');
-        sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));
         sb.append(',');
         if (sb.charAt((sb.length() - 1)) == ',') {
             sb.setCharAt((sb.length() - 1), ']');
